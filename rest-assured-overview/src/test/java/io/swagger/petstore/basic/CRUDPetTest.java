@@ -1,9 +1,9 @@
-package io.swagger.petstore.basics;
+package io.swagger.petstore.basic;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CRUDPetTest {
@@ -51,7 +51,7 @@ public class CRUDPetTest {
     @Test
     public void testCreatePet() {
 
-        String responseBody = given()
+        String responseBody = RestAssured.given()
                 .accept(ContentType.JSON)
                 .header("api_key", "1234567890")
                 .contentType(ContentType.JSON)
@@ -71,7 +71,7 @@ public class CRUDPetTest {
     @Test
     public void testUpdatePet() {
 
-        String responseBody = given()
+        String responseBody = RestAssured.given()
                 .accept(ContentType.JSON)
                 .header("api_key", "1234567890")
                 .contentType(ContentType.JSON)
@@ -90,7 +90,7 @@ public class CRUDPetTest {
 
     @Test
     public void testGetPet() {
-        String responseBody = given()
+        String responseBody = RestAssured.given()
                 .accept(ContentType.JSON)
                 .header("api_key", "1234567890")
                 .when()
@@ -107,7 +107,7 @@ public class CRUDPetTest {
 
     @Test
     public void testDeletePet() {
-        String responseBody = given()
+        String responseBody = RestAssured.given()
                 .accept(ContentType.JSON)
                 .header("api_key", "1234567890")
                 .when()
