@@ -1,4 +1,4 @@
-package io.swagger.petstore.constant;
+package io.swagger.petstore.model.constant;
 
 public class PetStatus {
 
