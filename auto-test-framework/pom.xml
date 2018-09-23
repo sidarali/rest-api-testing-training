@@ -47,8 +47,8 @@
                 <version>2.22.0</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <baseUri>${baseUri}</baseUri>
-                        <apiKey>${apiKey}</apiKey>
+                        <petstoreBaseUri>${petstoreBaseUri}</petstoreBaseUri>
+                        <petstoreApiKey>${petstoreApiKey}</petstoreApiKey>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
