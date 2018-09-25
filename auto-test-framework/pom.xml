@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>rest-api-testing-training</artifactId>
-        <groupId>org.mantisbt</groupId>
+        <groupId>io.swagger.petstore</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -47,10 +47,8 @@
                 <version>2.22.0</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <mantisBaseUri>${mantisBaseUri}</mantisBaseUri>
-                        <mantisPort>${mantisPort}</mantisPort>
-                        <mantisBasePath>${mantisBasePath}</mantisBasePath>
-                        <mantisAuthToken>${mantisAuthToken}</mantisAuthToken>
+                        <petstoreBaseUri>${petstoreBaseUri}</petstoreBaseUri>
+                        <petstoreApiKey>${petstoreApiKey}</petstoreApiKey>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
