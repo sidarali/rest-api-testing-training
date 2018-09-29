@@ -1,5 +1,7 @@
 package io.swagger.petstore.client;
 
+import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.swagger.petstore.client.constant.Header;
@@ -13,8 +15,8 @@ public abstract class PetStoreAbstractClient {
     private static final String PETSTORE_BASE_URI = System.getProperty("petstoreBaseUri");
 
     protected static final RequestSpecification SPECIFICATION = new RequestSpecBuilder()
+            .addFilter(new AllureRestAssured())
             .addHeader(Header.API_KEY, PETSTORE_API_KEY)
-            .setContentType(JSON)
             .setAccept(JSON)
             .setBaseUri(PETSTORE_BASE_URI)
             .setBasePath(Path.BASE_PATH)
