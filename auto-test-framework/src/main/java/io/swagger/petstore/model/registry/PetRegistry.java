@@ -10,7 +10,7 @@ public class PetRegistry {
 
     private static AtomicInteger COUNTER = new AtomicInteger(0);
 
-    public static Pet getPet() {
+    public static Pet getUniquePetWithSetRequiredFields() {
 
         return getPetBuilder().build();
     }
@@ -18,7 +18,7 @@ public class PetRegistry {
     public static PetBuilder getPetBuilder() {
         int index = COUNTER.incrementAndGet();
 
-        //sets only mandatory Pet fields
+        //sets only required Pet fields
         return new PetBuilder()
                 .setId(index)
                 .setName("auto_test_" + index)
