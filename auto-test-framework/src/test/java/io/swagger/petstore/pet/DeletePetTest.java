@@ -17,7 +17,7 @@ public class DeletePetTest extends BaseTest {
     @BeforeClass
     public void createPet() {
 
-        Pet createdPet = PetClient.createPet(PetRegistry.getUniquePetWithSetRequiredFileds())
+        Pet createdPet = PetClient.createPet(PetRegistry.getUniquePetWithSetRequiredFields())
                 .assertThat().statusCode(200)
                 .extract().body().as(Pet.class);
 

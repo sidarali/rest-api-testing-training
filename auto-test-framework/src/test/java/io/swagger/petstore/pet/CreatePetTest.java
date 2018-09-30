@@ -7,11 +7,13 @@ import io.swagger.petstore.model.Pet;
 import io.swagger.petstore.model.Tag;
 import io.swagger.petstore.model.registry.PetRegistry;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static io.swagger.petstore.model.constant.PetStatus.*;
 import static io.restassured.http.ContentType.JSON;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,15 +27,15 @@ public class CreatePetTest extends BaseTest {
         PetClient.deletePet(petId);
     }
 
-    @Test
-    public void testCreatePet_OnlyRequiredFields() {
-
-        Pet petToCreate = PetRegistry.getUniquePetWithSetRequiredFileds();
-        testCreatePet(petToCreate);
+    @DataProvider(name = "status")
+    public static Object[][] createData() {
+        return new Object[][]{
+                {AVAILABLE}, {PENDING}, {SOLD}
+        };
     }
 
-    @Test
-    public void testCreatePet_AllFields() {
+    @Test(dataProvider = "status")
+    public void testCreatePet_AllFields_Status(String status) {
 
         List<String> photoUrls = new ArrayList<>();
         photoUrls.add("photos.org/photo1");
@@ -47,8 +49,16 @@ public class CreatePetTest extends BaseTest {
                 .setCategory(new Category(1, "Test category 1"))
                 .setPhotoUrls(photoUrls)
                 .setTags(tags)
+                .setStatus(status)
                 .build();
 
+        testCreatePet(petToCreate);
+    }
+
+    @Test
+    public void testCreatePet_OnlyRequiredFields() {
+
+        Pet petToCreate = PetRegistry.getUniquePetWithSetRequiredFields();
         testCreatePet(petToCreate);
     }
 
