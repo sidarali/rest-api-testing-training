@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static io.restassured.http.ContentType.JSON;
-import static io.swagger.petstore.model.constant.PetStatus.PENDING;
-import static io.swagger.petstore.model.constant.PetStatus.SOLD;
+import static io.swagger.petstore.data.PetStatus.PENDING;
+import static io.swagger.petstore.data.PetStatus.SOLD;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GetPetTest extends BaseTest {

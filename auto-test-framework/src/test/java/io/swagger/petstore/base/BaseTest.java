@@ -3,13 +3,15 @@ package io.swagger.petstore.base;
 import io.swagger.petstore.model.Category;
 import io.swagger.petstore.model.Pet;
 import io.swagger.petstore.model.Tag;
-import io.swagger.petstore.model.constant.PetStatus;
+import io.swagger.petstore.data.PetStatus;
 import io.swagger.petstore.model.registry.PetRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseTest {
+
+    protected static final String IMAGE_FILE_NAME = "bug.png";
 
     //helper methods
 

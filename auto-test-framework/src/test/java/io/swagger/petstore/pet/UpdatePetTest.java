@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.http.ContentType.JSON;
-import static io.swagger.petstore.model.constant.PetStatus.PENDING;
+import static io.swagger.petstore.data.PetStatus.PENDING;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UpdatePetTest extends BaseTest {
@@ -24,7 +24,6 @@ public class UpdatePetTest extends BaseTest {
 
     @BeforeMethod
     public void createPet() {
-
         pet = PetClient.createPet(getGenericPetWithAllFields())
                 .assertThat().statusCode(200)
                 .extract().body().as(Pet.class);
@@ -34,20 +33,20 @@ public class UpdatePetTest extends BaseTest {
 
     @AfterMethod
     public void deletePet() {
-
         PetClient.deletePet(pet.getId());
     }
 
     @Test
     public void testUpdatePet() {
-
         List<String> photoUrlsUpdated = new ArrayList<>();
         photoUrlsUpdated.add("photos.org/updated-photo1");
         photoUrlsUpdated.add("photos.org/updated-photo2");
+        photoUrlsUpdated.add("photos.org/updated-photo3");
 
         List<Tag> tagsUpdated = new ArrayList<>();
         tagsUpdated.add(new Tag(1, "Test tag 1 updated"));
         tagsUpdated.add(new Tag(2, "Test tag 2 updated"));
+        tagsUpdated.add(new Tag(3, "Test tag 3 updated"));
 
         Pet petToUpdate = new PetBuilder()
                 .setId(pet.getId())
@@ -71,7 +70,6 @@ public class UpdatePetTest extends BaseTest {
 
     @Test
     public void testUpdatePet_FormData() {
-
         Pet updatedPet = new PetBuilder()
                 .setId(pet.getId())
                 .setName(UPDATED_NAME)
@@ -82,7 +80,6 @@ public class UpdatePetTest extends BaseTest {
                 .build();
 
         String responseBody = PetClient.updatePet(UPDATED_NAME, PENDING, pet.getId())
-                .log().everything()
                 .assertThat()
                 .statusCode(200)
                 .contentType(JSON)

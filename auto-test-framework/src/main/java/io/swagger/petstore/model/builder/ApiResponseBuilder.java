@@ -10,7 +10,7 @@ public class ApiResponseBuilder {
         apiResponse = new ApiResponse();
     }
 
-    public ApiResponseBuilder setCode(String code) {
+    public ApiResponseBuilder setCode(int code) {
         apiResponse.setCode(code);
         return this;
     }

@@ -2,7 +2,7 @@ package io.swagger.petstore.model.registry;
 
 import io.swagger.petstore.model.Pet;
 import io.swagger.petstore.model.builder.PetBuilder;
-import io.swagger.petstore.model.constant.PetStatus;
+import io.swagger.petstore.data.PetStatus;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
