@@ -8,10 +8,12 @@ import io.swagger.petstore.model.registry.PetRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class BaseTest {
 
     protected static final String IMAGE_FILE_NAME = "bug.png";
+    protected long nonexistent_id = ThreadLocalRandom.current().nextInt(1000, 2000);
 
     //helper methods
 
