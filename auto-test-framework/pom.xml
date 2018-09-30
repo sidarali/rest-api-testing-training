@@ -75,8 +75,8 @@
                 <version>2.22.0</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <petstoreBaseUri>${petstoreBaseUri}</petstoreBaseUri>
-                        <petstoreApiKey>${petstoreApiKey}</petstoreApiKey>
+                        <petstoreBaseUri>http://petstore.swagger.io</petstoreBaseUri>
+                        <petstoreApiKey>1234567890</petstoreApiKey>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>

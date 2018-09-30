@@ -2,16 +2,11 @@ package io.swagger.petstore.pet;
 
 import io.swagger.petstore.base.BaseTest;
 import io.swagger.petstore.client.PetClient;
-import io.swagger.petstore.model.Category;
 import io.swagger.petstore.model.Pet;
-import io.swagger.petstore.model.Tag;
 import io.swagger.petstore.model.registry.PetRegistry;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static io.swagger.petstore.model.constant.PetStatus.*;
 import static io.restassured.http.ContentType.JSON;
@@ -19,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CreatePetTest extends BaseTest {
 
-    private int petId;
+    private long petId;
 
     @AfterMethod
     public void deletePet() {
@@ -37,20 +32,8 @@ public class CreatePetTest extends BaseTest {
     @Test(dataProvider = "status")
     public void testCreatePet_AllFields_Status(String status) {
 
-        List<String> photoUrls = new ArrayList<>();
-        photoUrls.add("photos.org/photo1");
-        photoUrls.add("photos.org/photo2");
-
-        List<Tag> tags = new ArrayList<>();
-        tags.add(new Tag(1, "Test tag 1"));
-        tags.add(new Tag(2, "Test tag 2"));
-
-        Pet petToCreate = PetRegistry.getPetBuilder()
-                .setCategory(new Category(1, "Test category 1"))
-                .setPhotoUrls(photoUrls)
-                .setTags(tags)
-                .setStatus(status)
-                .build();
+        Pet petToCreate = getGenericPetWithAllFields();
+        petToCreate.setStatus(status);
 
         testCreatePet(petToCreate);
     }
@@ -58,7 +41,7 @@ public class CreatePetTest extends BaseTest {
     @Test
     public void testCreatePet_OnlyRequiredFields() {
 
-        Pet petToCreate = PetRegistry.getUniquePetWithSetRequiredFields();
+        Pet petToCreate = PetRegistry.getUniquePetWithOnlyRequiredFields();
         testCreatePet(petToCreate);
     }
 

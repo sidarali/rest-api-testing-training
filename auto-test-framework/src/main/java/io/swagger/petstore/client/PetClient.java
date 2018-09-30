@@ -43,7 +43,7 @@ public class PetClient extends PetStoreAbstractClient {
     }
 
     @Step
-    public static ValidatableResponse updatePet(String name, String status, int id) {
+    public static ValidatableResponse updatePet(String name, String status, long id) {
 
         return given(SPECIFICATION)
                 .contentType(URLENC)
@@ -56,7 +56,7 @@ public class PetClient extends PetStoreAbstractClient {
     }
 
     @Step
-    public static ValidatableResponse uploadPetImage(String additionalMetadata, String file, int id) {
+    public static ValidatableResponse uploadPetImage(String additionalMetadata, String file, long id) {
 
         return given(SPECIFICATION)
                 .multiPart(new File(FILE_LOCATION + file))
@@ -68,7 +68,7 @@ public class PetClient extends PetStoreAbstractClient {
     }
 
     @Step
-    public static ValidatableResponse getPet(int id) {
+    public static ValidatableResponse getPet(long id) {
 
         return given(SPECIFICATION)
                 .pathParam(PET_ID, id)
@@ -81,14 +81,14 @@ public class PetClient extends PetStoreAbstractClient {
     public static ValidatableResponse getPets(String status) {
 
         return given(SPECIFICATION)
-                .pathParam(QueryParam.STATUS, status)
+                .queryParam(QueryParam.STATUS, status)
                 .when()
                 .get(PET + FIND_BY_STATUS)
                 .then();
     }
 
     @Step
-    public static ValidatableResponse deletePet(int id) {
+    public static ValidatableResponse deletePet(long id) {
 
         return given(SPECIFICATION)
                 .pathParam(PET_ID, id)

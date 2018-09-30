@@ -5,18 +5,18 @@ import java.util.Objects;
 
 public class Pet {
 
-    private int id;
+    private long id;
     private Category category;
     private String name;
     private List<String> photoUrls;
     private List<Tag> tags;
     private String status;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

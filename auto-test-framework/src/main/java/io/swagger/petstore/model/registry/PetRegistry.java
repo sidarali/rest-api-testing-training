@@ -10,7 +10,7 @@ public class PetRegistry {
 
     private static AtomicInteger COUNTER = new AtomicInteger(0);
 
-    public static Pet getUniquePetWithSetRequiredFields() {
+    public static Pet getUniquePetWithOnlyRequiredFields() {
 
         return getPetBuilder().build();
     }

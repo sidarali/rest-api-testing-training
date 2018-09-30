@@ -3,7 +3,6 @@ package io.swagger.petstore.pet;
 import io.swagger.petstore.base.BaseTest;
 import io.swagger.petstore.client.PetClient;
 import io.swagger.petstore.model.Pet;
-import io.swagger.petstore.model.registry.PetRegistry;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -12,12 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeletePetTest extends BaseTest {
 
-    private int petId;
+    private long petId;
 
     @BeforeClass
     public void createPet() {
 
-        Pet createdPet = PetClient.createPet(PetRegistry.getUniquePetWithSetRequiredFields())
+        Pet createdPet = PetClient.createPet(getGenericPetWithAllFields())
                 .assertThat().statusCode(200)
                 .extract().body().as(Pet.class);
 
