@@ -18,7 +18,6 @@ public class CreatePetTest extends BaseTest {
 
     @AfterMethod
     public void deletePet() {
-
         PetClient.deletePet(petId);
     }
 
@@ -31,7 +30,6 @@ public class CreatePetTest extends BaseTest {
 
     @Test(dataProvider = "status")
     public void testCreatePet_AllFields_Status(String status) {
-
         Pet petToCreate = getGenericPetWithAllFields();
         petToCreate.setStatus(status);
 
@@ -40,13 +38,11 @@ public class CreatePetTest extends BaseTest {
 
     @Test
     public void testCreatePet_OnlyRequiredFields() {
-
         Pet petToCreate = PetRegistry.getUniquePetWithOnlyRequiredFields();
         testCreatePet(petToCreate);
     }
 
     private void testCreatePet(Pet petToCreate) {
-
         petId = petToCreate.getId();
 
         Pet createdPet = PetClient.createPet(petToCreate)

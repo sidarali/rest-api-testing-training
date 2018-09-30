@@ -14,7 +14,7 @@ public class PetBuilder {
         pet = new Pet();
     }
 
-    public PetBuilder setId(int id) {
+    public PetBuilder setId(long id) {
         pet.setId(id);
         return this;
     }

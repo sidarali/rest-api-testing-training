@@ -59,7 +59,6 @@ public class GetPetTest extends BaseTest {
 
     @Test
     public void testGetPet() {
-
         Pet fetchedPet = PetClient.getPet(pendingPet1.getId())
                 .assertThat()
                 .statusCode(200)
@@ -73,8 +72,7 @@ public class GetPetTest extends BaseTest {
 
     @Test
     public void testGetPets() {
-
-        List<Pet> fetchedPets =  PetClient.getPets(PENDING)
+        List<Pet> fetchedPets = PetClient.getPets(PENDING)
                 .assertThat()
                 .statusCode(200)
                 .contentType(JSON)

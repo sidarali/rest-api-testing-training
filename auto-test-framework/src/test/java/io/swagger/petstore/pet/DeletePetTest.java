@@ -15,7 +15,6 @@ public class DeletePetTest extends BaseTest {
 
     @BeforeClass
     public void createPet() {
-
         Pet createdPet = PetClient.createPet(getGenericPetWithAllFields())
                 .assertThat().statusCode(200)
                 .extract().body().as(Pet.class);
@@ -26,7 +25,6 @@ public class DeletePetTest extends BaseTest {
 
     @Test
     public void testDeletePet() {
-
         String responseBody = PetClient.deletePet(petId)
                 .assertThat()
                 .statusCode(200)
