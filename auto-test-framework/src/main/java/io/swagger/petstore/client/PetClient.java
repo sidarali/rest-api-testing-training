@@ -59,7 +59,7 @@ public class PetClient extends PetStoreAbstractClient {
     public static ValidatableResponse uploadPetImage(String additionalMetadata, String file, long id) {
 
         return given(SPECIFICATION)
-                .multiPart(new File(FILE_LOCATION + file))
+                .multiPart(FormParam.FILE, new File(FILE_LOCATION + file))
                 .formParam(FormParam.ADDITIONAL_METADATA, additionalMetadata)
                 .pathParam(PET_ID, id)
                 .when()
