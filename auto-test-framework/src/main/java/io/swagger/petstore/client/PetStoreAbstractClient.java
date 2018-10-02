@@ -18,7 +18,7 @@ abstract class PetStoreAbstractClient {
     private static final LogConfig LOG_CONFIG = new LogConfig()
             .enableLoggingOfRequestAndResponseIfValidationFails();
 
-    static final RequestSpecification SPECIFICATION = new RequestSpecBuilder()
+    protected static final RequestSpecification SPECIFICATION = new RequestSpecBuilder()
             .addFilter(new AllureRestAssured())
             .addHeader(Header.API_KEY, PETSTORE_API_KEY)
             .setAccept(JSON)
