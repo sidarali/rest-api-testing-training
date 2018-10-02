@@ -1,0 +1,18 @@
+{
+  "id": 91,
+  "category": {
+    "id": 1,
+    "name": "auto_test_sample_category"
+  },
+  "name": "auto_test_sample_pet",
+  "photoUrls": [
+    "https://auto-test-sample-photo"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "auto_test_sample_tag"
+    }
+  ],
+  "status": "available"
+}

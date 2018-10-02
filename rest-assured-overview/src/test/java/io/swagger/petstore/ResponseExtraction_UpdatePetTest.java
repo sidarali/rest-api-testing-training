@@ -3,6 +3,7 @@ package io.swagger.petstore;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+import io.swagger.petstore.base.BaseTest;
 import io.swagger.petstore.model.Category;
 import io.swagger.petstore.model.Pet;
 import io.swagger.petstore.model.Tag;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ResponseExtraction_UpdatePetTest {
+public class ResponseExtraction_UpdatePetTest extends BaseTest {
 
     private int petId = 91;
 
@@ -44,10 +45,8 @@ public class ResponseExtraction_UpdatePetTest {
                 .contentType(ContentType.JSON)
                 .body(updatedPetJson)
                 .when()
-                .log().everything()
                 .put("https://petstore.swagger.io/v2/pet")
                 .then()
-                .log().everything()
                 .statusCode(200)
                 .contentType(ContentType.JSON);
 

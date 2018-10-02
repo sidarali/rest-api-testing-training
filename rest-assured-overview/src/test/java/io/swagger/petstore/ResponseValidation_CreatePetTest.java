@@ -2,14 +2,15 @@ package io.swagger.petstore;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.swagger.petstore.base.BaseTest;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 
-public class ResponseValidation_CreatePetTest {
+public class ResponseValidation_CreatePetTest extends BaseTest {
 
     private int petId = 91;
 
@@ -40,10 +41,8 @@ public class ResponseValidation_CreatePetTest {
                 .contentType(ContentType.JSON)
                 .body(petJson)
                 .when()
-                .log().everything()
                 .post("https://petstore.swagger.io/v2/pet")
                 .then()
-                .log().everything()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
                 .header("Date", notNullValue())
@@ -56,39 +55,5 @@ public class ResponseValidation_CreatePetTest {
                         "tags.id", hasSize(1),
                         "tags.name", hasItem("auto_test_sample_tag"),
                         "status", equalTo("available"));
-    }
-
-    @Test
-    public void testDeletePet() {
-        String responseBody = RestAssured.given()
-                .accept(ContentType.JSON)
-                .header("api_key", "1234567890")
-                .when()
-                .log().everything()
-                .delete("https://petstore.swagger.io/v2/pet/" + petId)
-                .then()
-                .log().everything()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                .extract().body().asString();
-
-        assertThat(responseBody).isEqualTo("");
-    }
-
-    @Test
-    public void testFindPetByStatus() {
-
-        RestAssured.given()
-                .accept(ContentType.JSON)
-                .header("api_key", "1234567890")
-                .queryParam("status", "pending")
-                .when()
-                .log().everything()
-                .get("https://petstore.swagger.io/v2/findByStatus")
-                .then()
-                .log().everything()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                .extract().body().asString();
     }
 }
