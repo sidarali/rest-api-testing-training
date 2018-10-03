@@ -10,9 +10,11 @@ public class BaseTest {
 
     @BeforeClass
     public void configureRestAssured() {
+
         RestAssured.requestSpecification = new RequestSpecBuilder()
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
+                .setUrlEncodingEnabled(false)
                 .build();
     }
 }
