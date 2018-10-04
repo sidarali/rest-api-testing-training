@@ -53,6 +53,8 @@ public class ResponseValidation_CreatePetTest extends BaseTest {
                         "photoUrls", hasSize(1),
                         "photoUrls", hasItem("https://auto-test-sample-photo"),
                         "tags.id", hasSize(1),
+                        "tags.id", hasItem(1),
+                        "tags.name", hasSize(1),
                         "tags.name", hasItem("auto_test_sample_tag"),
                         "status", equalTo("available"));
     }
