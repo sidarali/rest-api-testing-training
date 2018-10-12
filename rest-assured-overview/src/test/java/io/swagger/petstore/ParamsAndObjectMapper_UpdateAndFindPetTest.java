@@ -58,6 +58,7 @@ public class ParamsAndObjectMapper_UpdateAndFindPetTest extends BaseTest {
         try {
             pets = mapper.readValue(petsListJson, new TypeReference<List<Pet>>() {});
         } catch (IOException e) {
+            System.out.println("Error occurred");
             e.printStackTrace();
         }
         return pets;
