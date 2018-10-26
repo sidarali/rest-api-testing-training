@@ -3,7 +3,7 @@ package io.swagger.petstore.client.constant;
 public class Path {
 
     //common
-    public static final String BASE_PATH = "/v2";
+    public static final String BASE_PATH = "/";
 
     //pet
     public static final String PET = "/pet";

@@ -20,8 +20,6 @@ abstract class PetStoreAbstractClient {
 
     protected static final RequestSpecification SPECIFICATION = new RequestSpecBuilder()
             .addFilter(new AllureRestAssured())
-            .addHeader(Header.API_KEY, PETSTORE_API_KEY)
-            .setAccept(JSON)
             .setBaseUri(PETSTORE_BASE_URI)
             .setBasePath(Path.BASE_PATH)
             .setConfig(RestAssuredConfig.config().logConfig(LOG_CONFIG))
